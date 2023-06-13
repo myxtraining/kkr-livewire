@@ -38,4 +38,9 @@ Route::middleware([
 
     // Couter
     Route::get('/counter', Counter::class)->name('counter');
+
+    // Couter Alpine
+    Route::get('/counter-alpine', function () {
+        return view('counter-alpine');
+    })->name('counter-alpine');
 });
