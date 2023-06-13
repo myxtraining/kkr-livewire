@@ -31,6 +31,10 @@
                     <x-nav-link href="{{ route('counter-alpine') }}" :active="request()->routeIs('counter-alpine')">
                         {{ __('Counter Alpine') }}
                     </x-nav-link>
+
+                    <x-nav-link href="{{ route('review') }}" :active="request()->routeIs('review')">
+                        {{ __('Review') }}
+                    </x-nav-link>
                 </div>
             </div>
 

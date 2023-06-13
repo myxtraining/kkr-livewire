@@ -2,6 +2,7 @@
 
 use App\Http\Livewire\Counter;
 use App\Http\Livewire\HelloLivewire;
+use App\Http\Livewire\Review;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -43,4 +44,7 @@ Route::middleware([
     Route::get('/counter-alpine', function () {
         return view('counter-alpine');
     })->name('counter-alpine');
+
+    // Review
+    Route::get('/review', Review::class)->name('review');
 });
