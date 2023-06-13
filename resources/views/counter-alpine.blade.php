@@ -6,7 +6,15 @@
         </h2>
     </x-slot>
 
-    <div class="py-12" x-data="{ counter: 0 }">
+    <div class="py-12" x-data="{
+        counter: 0,
+        get add() {
+            return this.counter++;
+        },
+        get minus(){
+            return this.counter--;
+        }
+    }">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
                 <div class="p-6 lg:p-8 bg-white border-b border-gray-200">
@@ -34,9 +42,9 @@
                                     deserunt sunt. Qui irure qui lorem cupidatat commodo. Elit sunt amet fugiat veniam
                                     occaecat fugiat aliqua.</p>
                                 <div class="mt-10 flex items-center justify-center gap-x-6">
-                                    <a href="#" x-on:click="counter++"
+                                    <a href="#" x-on:click="add"
                                         class="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Add</a>
-                                    <a href="#" x-on:click="counter--"
+                                    <a href="#" x-on:click="minus"
                                         class="rounded-md bg-red-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-red-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Minus</a>
                                 </div>
                             </div>
