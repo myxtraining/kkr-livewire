@@ -25,4 +25,9 @@ Route::middleware([
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
+
+     // Hello Jetstream 
+     Route::get('/hello-jetstream', function () {
+        return view('hello-jetstream');
+    })->name('hello-jetstream');
 });
