@@ -28,10 +28,15 @@ class Review extends Component
     //     ],
     // ];
 
+    protected $rules = [
+        'newReview' => 'required|min:10',        
+    ];
+
     public $newReview;
 
     public function save()
     {
+        $this->validate();
         // array_unshift($this->reviews, [
         //     'name' => Auth::user()->name,
         //     'content' => $this->newReview
@@ -49,7 +54,7 @@ class Review extends Component
     public function render()
     {
         return view('livewire.review', [
-            'reviews' => ModelsReview::all()
+            'reviews' => ModelsReview::orderBy('created_at', 'desc')->get()
         ]);
     }
 }

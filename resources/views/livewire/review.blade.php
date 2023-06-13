@@ -48,6 +48,8 @@
                             </button>
                         </form>
 
+                        @error('newReview') <span class="text-red-500">{{ $message }}</span> @enderror
+
                     </div>
 
                     <!-- List -->
