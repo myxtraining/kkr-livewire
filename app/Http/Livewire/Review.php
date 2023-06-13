@@ -5,9 +5,11 @@ namespace App\Http\Livewire;
 use App\Models\Review as ModelsReview;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 class Review extends Component
 {
+    use WithPagination;
     // Nanti content ni akan datang dari DB
     // public $reviews = [
     //     [
@@ -29,11 +31,23 @@ class Review extends Component
     // ];
 
     protected $rules = [
-        'newReview' => 'required|min:10',        
+        'newReview' => 'required|min:10',
     ];
 
     public $newReview;
 
+    /**
+     * Function like
+     */
+    public function like(ModelsReview $review)
+    {
+        $review->like += 1;
+        $review->update();
+    }
+
+    /**
+     * Save item
+     */
     public function save()
     {
         $this->validate();
@@ -46,7 +60,7 @@ class Review extends Component
             'content' => $this->newReview,
             'user_id' => Auth::id()
         ]);
-        
+
         $this->newReview = '';
     }
 
@@ -54,7 +68,7 @@ class Review extends Component
     public function render()
     {
         return view('livewire.review', [
-            'reviews' => ModelsReview::orderBy('created_at', 'desc')->get()
+            'reviews' => ModelsReview::orderBy('created_at', 'desc')->paginate(3)
         ]);
     }
 }

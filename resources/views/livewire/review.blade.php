@@ -48,7 +48,9 @@
                             </button>
                         </form>
 
-                        @error('newReview') <span class="text-red-500">{{ $message }}</span> @enderror
+                        @error('newReview')
+                            <span class="text-red-500">{{ $message }}</span>
+                        @enderror
 
                     </div>
 
@@ -62,24 +64,29 @@
                                         src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
                                         alt="">
                                     <div class="min-w-0 flex-auto">
-                                        <p class="text-sm font-semibold leading-6 text-gray-900">{{ $review->user->name }}</p>
+                                        <p class="text-sm font-semibold leading-6 text-gray-900">
+                                            {{ $review->user->name }}</p>
                                         <p class="mt-1 truncate text-xs leading-2 text-gray-500">
                                             {{ $review->content }}</p>
                                     </div>
                                 </div>
-                                <div class="hidden sm:flex sm:flex-col sm:items-end">                                    
+                                <div class="hidden sm:flex sm:flex-col sm:items-end">
                                     <p class="mt-4 text-xs leading-5 text-gray-500">
-                                        <a href="#" 
-                                        class=" rounded-md bg-gray-100 border-gray-300 border px-3.5 py-2.5 text-sm font-semibold text-gray-500 shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Like</a>
+                                        <a href="#" wire:click="like({{ $review->id }})"
+                                            class=" rounded-md bg-gray-100 border-gray-300 
+                                        border px-3.5 py-2.5 text-sm font-semibold text-gray-500
+                                         hover:text-white shadow-sm hover:bg-gray-500 
+                                         focus-visible:outline focus-visible:outline-2
+                                          focus-visible:outline-offset-2 
+                                          focus-visible:outline-indigo-600">Like
+                                            ({{ $review->like ?: 0 }})</a>
                                     </p>
                                 </div>
                             </li>
                         @endforeach
-
-
-
                     </ul>
 
+                    {{ $reviews->links() }}
 
                 </div>
             </div>
