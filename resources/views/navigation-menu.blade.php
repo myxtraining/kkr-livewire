@@ -23,9 +23,13 @@
                     <x-nav-link href="{{ route('hello-livewire') }}" :active="request()->routeIs('hello-livewire')">
                         {{ __('Hello Livewire') }}
                     </x-nav-link>
-
+                
                     <x-nav-link href="{{ route('counter') }}" :active="request()->routeIs('counter')">
                         {{ __('Counter') }}
+                    </x-nav-link>
+
+                    <x-nav-link href="{{ route('counter-alpine') }}" :active="request()->routeIs('counter-alpine')">
+                        {{ __('Counter Alpine') }}
                     </x-nav-link>
                 </div>
             </div>
