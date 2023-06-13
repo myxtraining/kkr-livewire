@@ -61,14 +61,15 @@
                                         alt="">
                                     <div class="min-w-0 flex-auto">
                                         <p class="text-sm font-semibold leading-6 text-gray-900">{{ $review['name'] }}</p>
-                                        <p class="mt-1 truncate text-xs leading-5 text-gray-500">
+                                        <p class="mt-1 truncate text-xs leading-2 text-gray-500">
                                             {{ $review['content'] }}</p>
                                     </div>
                                 </div>
-                                <div class="hidden sm:flex sm:flex-col sm:items-end">
-                                    <p class="text-sm leading-6 text-gray-900">Co-Founder / CEO</p>
-                                    <p class="mt-1 text-xs leading-5 text-gray-500">Last seen <time
-                                            datetime="2023-01-23T13:23Z">3h ago</time></p>
+                                <div class="hidden sm:flex sm:flex-col sm:items-end">                                    
+                                    <p class="mt-4 text-xs leading-5 text-gray-500">
+                                        <a href="#" 
+                                        class=" rounded-md bg-gray-100 border-gray-300 border px-3.5 py-2.5 text-sm font-semibold text-gray-500 shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Like</a>
+                                    </p>
                                 </div>
                             </li>
                         @endforeach
