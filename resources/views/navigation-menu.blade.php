@@ -19,6 +19,10 @@
                     <x-nav-link href="{{ route('hello-jetstream') }}" :active="request()->routeIs('hello-jetstream')">
                         {{ __('Hello Jetstream') }}
                     </x-nav-link>
+
+                    <x-nav-link href="{{ route('hello-livewire') }}" :active="request()->routeIs('hello-livewire')">
+                        {{ __('Hello Livewire') }}
+                    </x-nav-link>
                 </div>
             </div>
 

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Livewire\HelloLivewire;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -30,4 +31,8 @@ Route::middleware([
      Route::get('/hello-jetstream', function () {
         return view('hello-jetstream');
     })->name('hello-jetstream');
+
+    // Hello Livewire 
+    Route::get('/hello-livewire', HelloLivewire::class)->name('hello-livewire');
+    
 });
