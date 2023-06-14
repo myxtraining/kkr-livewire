@@ -19,7 +19,8 @@ class Log extends Component
      * add listener to livewire event bus
      */
     protected $listeners = [
-        'select-log' => 'logSelectHandle'
+        'select-log' => 'logSelectHandle',
+        'review-added' => '$refresh'
     ];
 
     /** 

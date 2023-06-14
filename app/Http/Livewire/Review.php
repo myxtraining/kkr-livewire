@@ -60,6 +60,9 @@ class Review extends Component
             'log_id' => $this->log->id
         ]);
 
+        // Broadcast event ke dalam event bus
+        $this->emit('review-added');
+
         $this->newReview = '';
     }
 
