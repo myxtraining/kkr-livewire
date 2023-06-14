@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\Log;
 use App\Models\Review as ModelsReview;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
@@ -10,25 +11,14 @@ use Livewire\WithPagination;
 class Review extends Component
 {
     use WithPagination;
-    // Nanti content ni akan datang dari DB
-    // public $reviews = [
-    //     [
-    //         'name' => 'Siti Aishah',
-    //         'content' => "This is useful for persisting search filters, 
-    //         active tabs, and other features where users will be frustrated if 
-    //         their configuration is reset after refreshing or leaving and revisiting a page."
-    //     ],
-    //     [
-    //         'name' => 'Siti Khadijah',
-    //         'content' => "You can include the CDN build of this plugin as a <script> 
-    //         tag, just make sure to include it BEFORE Alpine's core JS file."
-    //     ],
-    //     [
-    //         'name' => 'Nurhaliza Abdullah',
-    //         'content' => "You can use this plugin by either including it from a 
-    //         <script> tag or installing it via NPM:"
-    //     ],
-    // ];
+
+    public Log $log;
+
+    // public function mount(Log $log)
+    // {
+    //     $this->log = $log;
+    // }
+
 
     protected $rules = [
         'newReview' => 'required|min:10',
@@ -36,14 +26,20 @@ class Review extends Component
 
     public $newReview;
 
+  
+    public function mount(Log $log)
+    {
+        $this->log = $log;
+    }
+
     /**
      * Function like
      */
     public function like(ModelsReview $review)
     {
-        $review->like += 1;
-        $review->update();
+        $review->liked() ? $review->unlike() : $review->like();
     }
+
 
     /**
      * Save item
@@ -58,7 +54,8 @@ class Review extends Component
 
         ModelsReview::create([
             'content' => $this->newReview,
-            'user_id' => Auth::id()
+            'user_id' => Auth::id(),
+            'log_id' => $this->log->id
         ]);
 
         $this->newReview = '';
@@ -67,8 +64,8 @@ class Review extends Component
 
     public function render()
     {
-        return view('livewire.review', [
-            'reviews' => ModelsReview::orderBy('created_at', 'desc')->paginate(3)
+        return view('livewire.review-section', [
+            'reviews' => ModelsReview::where('log_id', $this->log->id)->orderBy('created_at', 'desc')->paginate(3)
         ]);
     }
 }

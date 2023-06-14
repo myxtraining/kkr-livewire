@@ -8,6 +8,13 @@ class Counter extends Component
 {
     public $counter = 0;
 
+    public $confirmingUserDeletion = false;
+
+    public function confirmation()
+    {                
+        $this->confirmingUserDeletion = true;        
+    }
+
     public function add()
     {
         $this->counter++;

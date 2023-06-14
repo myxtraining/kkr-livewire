@@ -32,8 +32,12 @@
                         {{ __('Counter Alpine') }}
                     </x-nav-link>
 
-                    <x-nav-link href="{{ route('review') }}" :active="request()->routeIs('review')">
+                    {{-- <x-nav-link href="{{ route('review') }}" :active="request()->routeIs('review')">
                         {{ __('Review') }}
+                    </x-nav-link> --}}
+
+                    <x-nav-link href="{{ route('log') }}" :active="request()->routeIs('log')">
+                        {{ __('Log') }}
                     </x-nav-link>
                 </div>
             </div>

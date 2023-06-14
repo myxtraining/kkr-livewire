@@ -2,6 +2,7 @@
 
 use App\Http\Livewire\Counter;
 use App\Http\Livewire\HelloLivewire;
+use App\Http\Livewire\Log\Log;
 use App\Http\Livewire\Review;
 use Illuminate\Support\Facades\Route;
 
@@ -46,5 +47,13 @@ Route::middleware([
     })->name('counter-alpine');
 
     // Review
-    Route::get('/review', Review::class)->name('review');
+    Route::get('/review/{log}', Review::class)->name('review');
+
+    // Log
+    Route::get('/log', Log::class)->name('log');
+
+    // Log Section
+    Route::get('/log-section', function () {
+        return view('log-section');
+    })->name('log-section');
 });

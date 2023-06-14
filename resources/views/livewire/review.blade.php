@@ -11,6 +11,8 @@
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
                 <div class="p-6 lg:p-8 bg-white border-b border-gray-200">
 
+                    {{ $log->title }}
+                    
                     <!-- Form -->
                     <div style="max-width:1200px;">
 
@@ -66,21 +68,52 @@
                                     <div class="min-w-0 flex-auto">
                                         <p class="text-sm font-semibold leading-6 text-gray-900">
                                             {{ $review->user->name }}</p>
-                                        <p class="mt-1 truncate text-xs leading-2 text-gray-500">
+                                        <p class="mt-1 break-words text-xs leading-2 text-gray-500">
                                             {{ $review->content }}</p>
                                     </div>
                                 </div>
-                                <div class="hidden sm:flex sm:flex-col sm:items-end">
-                                    <p class="mt-4 text-xs leading-5 text-gray-500">
+
+
+
+                                <div class="flex flex-nowrap">
+
+
+
+                                    <div class="inline-flex sm:block mt-2">
                                         <a href="#" wire:click="like({{ $review->id }})"
-                                            class=" rounded-md bg-gray-100 border-gray-300 
-                                        border px-3.5 py-2.5 text-sm font-semibold text-gray-500
+                                            class="whitespace-nowrap rounded-md border-gray-300 
+                                        border px-3.5 py-2.5 text-sm font-semibold
+                                        {{ $review->liked() ? 'bg-teal-500 hover:bg-teal-800 text-white' : 'bg-gray-100' }}                                        
                                          hover:text-white shadow-sm hover:bg-gray-500 
                                          focus-visible:outline focus-visible:outline-2
                                           focus-visible:outline-offset-2 
-                                          focus-visible:outline-indigo-600">Like
-                                            ({{ $review->like ?: 0 }})</a>
-                                    </p>
+                                          focus-visible:outline-indigo-600">
+                                            {{ $review->liked() ? 'Unlike' : 'Like' }} ({{ $review->likeCount }})
+                                        </a>
+                                    </div>
+
+                                    <div class="inline-flex sm:block">
+
+                                        {{-- <a href="#" wire:click="$emit('openModal', 'alert-danger', {{ json_encode(["idKey" => $review->id]) }})"
+                                            class="inline-flex ml-2 rounded-md border-gray-300 
+                                            border px-3.5 py-2.5 text-sm font-semibold
+                                            bg-red-500 text-white hover:bg-red-700
+                                             hover:text-white shadow-sm 
+                                             focus-visible:outline focus-visible:outline-2
+                                              focus-visible:outline-offset-2 
+                                              focus-visible:outline-indigo-600">Delete</a> --}}
+
+                                        <a href="#"
+                                            wire:click="confirmation" wire:loading.attr="disabled"
+                                            class="inline-flex ml-2 rounded-md border-gray-300 
+                                                border px-3.5 py-2.5 text-sm font-semibold
+                                                bg-red-500 text-white hover:bg-red-700
+                                                 hover:text-white shadow-sm 
+                                                 focus-visible:outline focus-visible:outline-2
+                                                  focus-visible:outline-offset-2 
+                                                  focus-visible:outline-indigo-600">Delete</a>
+                                    </div>
+
                                 </div>
                             </li>
                         @endforeach
