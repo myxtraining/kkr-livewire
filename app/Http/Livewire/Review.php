@@ -14,20 +14,22 @@ class Review extends Component
 
     public Log $log;
 
-    // public function mount(Log $log)
-    // {
-    //     $this->log = $log;
-    // }
-
+    public $newReview;
 
     protected $rules = [
         'newReview' => 'required|min:10',
     ];
 
-    public $newReview;
+    protected $listeners = [
+        'select-log' => 'logSelectHandle'
+    ];
 
-  
     public function mount(Log $log)
+    {
+        $this->log = $log;
+    }
+
+    public function logSelectHandle(Log $log)
     {
         $this->log = $log;
     }
