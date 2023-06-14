@@ -9,6 +9,26 @@ class Log extends Component
 {
     public $logs, $title, $description, $logId;
     public $isOpen = 0;
+    
+    /**
+     * hold id for current selected log
+     */
+    public $idSelected;
+
+    /**
+     * add listener to livewire event bus
+     */
+    protected $listeners = [
+        'select-log' => 'logSelectHandle'
+    ];
+
+    /** 
+     * event handler
+     */
+    public function logSelectHandle($idSelected)
+    {
+        $this->idSelected = $idSelected;
+    }
 
     /**
      * The attributes that are mass assignable.

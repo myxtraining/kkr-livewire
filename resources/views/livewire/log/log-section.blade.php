@@ -24,6 +24,7 @@
                 @if ($isOpen)
                     @include('livewire.log.create')
                 @endif
+
                 <table class="table-fixed w-full">
                     <thead>
                         <tr class="bg-gray-100">
@@ -34,7 +35,7 @@
                     </thead>
                     <tbody>
                         @foreach ($logs as $log)
-                            <tr>
+                            <tr class="{{ $log->id == $idSelected ? 'bg-blue-100' : '' }}">
                                 <td class="border px-4 py-2">{{ $log->id }}</td>
                                 <td class="border px-4 py-2">{{ $log->title }}</td>
                                 <td class="border px-4 py-2 text-end">
