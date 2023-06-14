@@ -28,9 +28,10 @@
                 <table class="table-fixed w-full">
                     <thead>
                         <tr class="bg-gray-100">
-                            <th class="px-4 py-2 w-10">No.</th>
+                            <th class="px-4 py-2 w-5">No.</th>
                             <th class="px-4 py-2 text-start">Title</th>
-                            <th class="px-4 py-2">Action</th>
+                            <th class="px-4 py-2 text-center w-10">Total</th>
+                            <th class="px-4 py-2 w-70">Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -38,14 +39,15 @@
                             <tr class="{{ $log->id == $idSelected ? 'bg-blue-100' : '' }}">
                                 <td class="border px-4 py-2">{{ $log->id }}</td>
                                 <td class="border px-4 py-2">{{ $log->title }}</td>
+                                <td class="border px-4 py-2">{{ $log->reviews_count }}</td>
                                 <td class="border px-4 py-2 text-end">
 
                                     {{-- <button wire:click="edit({{ $log->id }})"
                                         class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">View</button> --}}
-                                    <a href="{{ route('review', ['log' => $log->id]) }}"
-                                        class="bg-teal-500 hover:bg-teal-700 text-white font-bold py-2 px-4 rounded">View</a>
+                                            {{-- <a href="{{ route('review', ['log' => $log->id]) }}"
+                                                class="bg-teal-500 hover:bg-teal-700 text-white font-bold py-2 px-4 rounded">View</a> --}}
                                     <a wire:click="$emit('select-log', {{ $log->id }})"
-                                        class="bg-teal-500 hover:bg-teal-700 text-white font-bold py-2 px-4 rounded">Emit</a>
+                                        class="bg-teal-500 hover:bg-teal-700 text-white font-bold py-2 px-4 rounded">Emit (view)</a>
                                     <a wire:click="edit({{ $log->id }})"
                                         class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Edit</a>
                                     <a wire:click="delete({{ $log->id }})"

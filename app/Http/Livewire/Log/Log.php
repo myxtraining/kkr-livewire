@@ -37,7 +37,7 @@ class Log extends Component
      */
     public function render()
     {
-        $this->logs = ModelsLog::all();
+        $this->logs = ModelsLog::withCount('reviews')->get();
         return view('livewire.log.log-section');
     }
 

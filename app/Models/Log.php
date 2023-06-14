@@ -18,4 +18,8 @@ class Log extends Model
         'title', 'description'
     ];
 
+    public function reviews()
+    {
+        return $this->hasMany(Review::class);
+    }
 }
