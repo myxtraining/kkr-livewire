@@ -23,7 +23,7 @@
                     <thead>
                         <tr class="bg-gray-100">
                             <th class="px-4 py-2 w-10">No.</th>
-                            <th class="px-4 py-2">Title</th>                            
+                            <th class="px-4 py-2 text-start">Title</th>                            
                             <th class="px-4 py-2">Action</th>
                         </tr>
                     </thead>
